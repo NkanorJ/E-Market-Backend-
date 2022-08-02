@@ -9,8 +9,8 @@ describe('Feed Controller', function() {
   before(function(done) {
     mongoose
       .connect(
-        'mongodb+srv://maximilan:backendpassword123@cluster0.i4jo8.mongodb.net/messages'
-      )
+        `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.i4jo8.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`
+        )
       .then(result => {
         const user = new User({
           email: 'test@test.com',
