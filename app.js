@@ -65,7 +65,9 @@ mongoose
      'mongodb+srv://maximilan:backendpassword123@cluster0.i4jo8.mongodb.net/messages'
   )
   .then(result => {
-    const server = app.listen(8080);
+    app.listen(process.env.PORT || 8080, '0.0.0.0', () => {
+      console.log("Server is running.");
+    });
     const io = require('./socket').init(server);
     io.on('connection', socket => {
       console.log('Client connected');
